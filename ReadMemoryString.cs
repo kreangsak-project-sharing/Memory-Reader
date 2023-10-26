@@ -5,14 +5,23 @@ using System.Text;
 
 class MemoryReader
 {
+    //-------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------------
+    //Key Code
     const int PROCESS_WM_READ = 0x0010;
 
+    //-------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------------
+    //DLL Imports
     [DllImport("kernel32.dll")]
     public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 
     [DllImport("kernel32.dll")]
     public static extern bool ReadProcessMemory(IntPtr hProcess, int lpBaseAddress, byte[] lpBuffer, int nSize, ref int lpBytesRead);
 
+    //-------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------------
+    //ReadMemoryString
     public static string ReadMemoryString(int address, Int32[] offsets, string processName, int processNo)
     {
         try
@@ -48,5 +57,6 @@ class MemoryReader
             Console.WriteLine("Error: " + ex.Message);
             return null;
         }
-    }    
+    }
+    
 } //Class
