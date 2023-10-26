@@ -1,2 +1,2 @@
 # Memory-Reader
-Memory-Reader with C#
+ C# Memory Reader
